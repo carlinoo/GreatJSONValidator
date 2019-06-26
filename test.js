@@ -5,8 +5,8 @@ let schema = {
     additionalProperties: false,
     required: true,
     properties: {
-        string: { type: 'string', required: true },
-        number: { type: 'number', required: true },
+        string: { type: 'string', required: true, format: "iso8601"},
+        number: { type: 'number', required: true, less_than: 10, greater_than: 1, equal_to: 9 },
         undefined: { type: 'undefined', required: true },
         null: { type: 'null', required: true },
         boolean: { type: 'boolean', required: true },
@@ -28,8 +28,8 @@ let schema = {
 }
 
 let data = {
-    string: 'string',
-    number: 1,
+    string: "2019-06-26T20:06:18.658Z",
+    number: 9,
     null: null,
     boolean: true,
     object: {

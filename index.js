@@ -9,22 +9,83 @@ const schema_validator = (_schema, _data) => {
 
     switch (schema.type) {
         case 'string':
-            if (schema.required) {
-                return functions.isString(data);
-            } else {
-                return functions.isString(data) || functions.isUndefined(data);
+            if (!schema.required && (!functions.isString(data)) && !functions.isUndefined(data)) {
+                return false;
             }
 
+            if (!schema.required && functions.isUndefined(data)) {
+                return true;
+            }
+
+            if (!functions.isString(data)) {
+                return false;
+            }   
+
+            // Valid options
+            if (!functions.isUndefined(schema.valid_options) && (!functions.isArray(schema.valid_options) || !schema.valid_options.includes(data))) {
+                return false;
+            }
+
+            // Greater than
+            if (!functions.isUndefined(schema.greater_than) && (data <= schema.greater_than)) {
+                return false;
+            }
+
+            // Less than
+            if (!functions.isUndefined(schema.less_than) && (data >= schema.less_than)) {
+                return false;
+            }
+
+            // Equal to
+            if (!functions.isUndefined(schema.equal_to) && (data !== schema.equal_to)) {
+                return false;
+            }
+
+            // ISO601 format
+            if (!functions.isUndefined(schema.format) && schema.format == 'iso8601' && !(/^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$/.test(data))) {
+                return false;
+            }
+
+
+            return true;
 
 
 
 
         case 'number':
-            if (schema.required) {
-                return functions.isNumber(data);
-            } else {
-                return functions.isNumber(data) || functions.isUndefined(data);
+            if (!schema.required && (!functions.isNumber(data)) && !functions.isUndefined(data)) {
+                return false;
             }
+
+            if (!schema.required && functions.isUndefined(data)) {
+                return true;
+            }
+
+            if (!functions.isNumber(data)) {
+                return false;
+            }
+
+            if (!functions.isUndefined(schema.valid_options) && (!functions.isArray(schema.valid_options) || !schema.valid_options.includes(data))) {
+                return false;
+            }
+
+            // Greater than
+            if (!functions.isUndefined(schema.greater_than) && (data <= schema.greater_than)) {
+                return false;
+            }
+
+            // Less than
+            if (!functions.isUndefined(schema.less_than) && (data >= schema.less_than)) {
+                return false;
+            }
+
+            // Equal to
+            if (!functions.isUndefined(schema.equal_to) && (data !== schema.equal_to)) {
+                return false;
+            }
+
+
+            return true;
 
 
 
@@ -32,11 +93,21 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'boolean':
-            if (schema.required) {
-                return functions.isBoolean(data);
-            } else {
-                return functions.isBoolean(data) || functions.isUndefined(data);
+            if (!schema.required && (!functions.isBoolean(data)) && !functions.isUndefined(data)) {
+                return false;
             }
+
+            if (!schema.required && functions.isUndefined(data)) {
+                return true;
+            }
+
+            if (!functions.isBoolean(data)) {
+                return false;
+            }
+            
+
+
+            return true;
 
 
 
@@ -53,11 +124,20 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'null':
-            if (schema.required) {
-                return functions.isNull(data);
-            } else {
-                return functions.isNull(data) || functions.isUndefined(data);
+            if (!schema.required && (!functions.isNull(data)) && !functions.isUndefined(data)) {
+                return false;
             }
+
+            if (!schema.required && functions.isUndefined(data)) {
+                return true;
+            }
+
+            if (!functions.isNull(data)) {
+                return false;
+            }
+
+
+            return true;
 
 
 
