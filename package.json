@@ -1,0 +1,16 @@
+{
+  "name": "simple-json-validator",
+  "version": "1.0.0",
+  "description": "This is a simple and fast JSON schema validator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "json",
+    "schema",
+    "validator"
+  ],
+  "author": "Carlino Gonzalez",
+  "license": "MIT"
+}
