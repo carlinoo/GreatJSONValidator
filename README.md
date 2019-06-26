@@ -8,7 +8,7 @@ npm install great-json-validator
 ###Example
 
 ```javascript
-const validator = require('./index');
+const validator = require('great-json-validator');
 
 let schema = {
     type: 'object',
