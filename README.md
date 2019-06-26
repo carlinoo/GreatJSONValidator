@@ -1,6 +1,11 @@
-# SimpleJSONValidator
+# GreatJSONValidator
 
-Example of validation:
+### Install
+```bash
+npm install great-json-validator
+```
+
+###Example
 
 ```javascript
 const validator = require('./index');
