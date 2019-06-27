@@ -46,6 +46,13 @@ const schema_validator = (_schema, _data) => {
                 return false;
             }
 
+            // Function validate if passed
+            if (!functions.isUndefined(schema.validate) && functions.isFunction(schema.validate)) {
+                if (!schema.validate(data)) {
+                    return false;
+                }
+            }
+
 
             return true;
 
@@ -82,6 +89,13 @@ const schema_validator = (_schema, _data) => {
             // Equal to
             if (!functions.isUndefined(schema.equal_to) && (data !== schema.equal_to)) {
                 return false;
+            }
+
+            // Function validate if passed
+            if (!functions.isUndefined(schema.validate) && functions.isFunction(schema.validate)) {
+                if (!schema.validate(data)) {
+                    return false;
+                }
             }
 
 
@@ -166,7 +180,21 @@ const schema_validator = (_schema, _data) => {
             
             
             for (let i = 0; i < properties.length; i++) {
+                // Function validate Each if passed
+                if (!functions.isUndefined(schema.validateEach) && functions.isFunction(schema.validateEach)) {
+                    if (!schema.validateEach(properties[i], data[properties[i]])) {
+                        return false;
+                    }
+                }
+
                 if (!schema_validator(schema.properties[properties[i]], data[properties[i]])) {
+                    return false;
+                }
+            }
+
+            // Function validate if passed
+            if (!functions.isUndefined(schema.validate) && functions.isFunction(schema.validate)) {
+                if (!schema.validate(data)) {
                     return false;
                 }
             }
@@ -197,7 +225,21 @@ const schema_validator = (_schema, _data) => {
             for (let i = 0; i < data.length; i++) {
                 if (!schema_validator(item_schema, data[i])) {
                     return false;
-                } 
+                }
+
+                // Function validate Each if passed
+                if (!functions.isUndefined(schema.validateEach) && functions.isFunction(schema.validateEach)) {
+                    if (!schema.validateEach(data[i])) {
+                        return false;
+                    }
+                }
+            }
+
+            // Function validate if passed
+            if (!functions.isUndefined(schema.validate) && functions.isFunction(schema.validate)) {
+                if (!schema.validate(data)) {
+                    return false;
+                }
             }
             
             return true;
@@ -227,6 +269,20 @@ const schema_validator = (_schema, _data) => {
 
             for (let i = 0; i < attributes.length; i++) {
                 if (!schema_validator(value_schema, data[attributes[i]])) {
+                    return false;
+                }
+
+                // Function validate Each if passed
+                if (!functions.isUndefined(schema.validateEach) && functions.isFunction(schema.validateEach)) {
+                    if (!schema.validateEach(attributes[i], data[attributes[i]])) {
+                        return false;
+                    }
+                }
+            }
+
+            // Function validate if passed
+            if (!functions.isUndefined(schema.validate) && functions.isFunction(schema.validate)) {
+                if (!schema.validate(data)) {
                     return false;
                 }
             }

@@ -5,7 +5,7 @@ let schema = {
     additionalProperties: false,
     required: true,
     properties: {
-        string: { type: 'string', required: true, format: "iso8601"},
+        string: { type: 'string', required: true, format: "iso8601", validate(data) { return true; }},
         number: { type: 'number', required: true, less_than: 10, greater_than: 1, equal_to: 9 },
         undefined: { type: 'undefined', required: true },
         null: { type: 'null', required: true },
@@ -13,7 +13,16 @@ let schema = {
         object: {
             type: 'object',
             required: false,
-            additionalProperties: true
+            additionalProperties: true,
+            validate(data) {
+                return true;
+            },
+
+            validateEach(key, value) {
+                console.log(key, value);
+                return true;
+            },
+            properties: { number: { type: 'number', required: true }}
         },
         array: { type: 'array', required: false, items: { type: 'string', required: false }},
         array_object: {
