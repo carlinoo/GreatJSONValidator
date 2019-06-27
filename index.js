@@ -9,11 +9,11 @@ const schema_validator = (_schema, _data) => {
 
     switch (schema.type) {
         case 'string':
-            if (!schema.required && (!functions.isString(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isString(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -60,11 +60,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'number':
-            if (!schema.required && (!functions.isNumber(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isNumber(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -107,11 +107,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'boolean':
-            if (!schema.required && (!functions.isBoolean(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isBoolean(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -138,11 +138,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'null':
-            if (!schema.required && (!functions.isNull(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isNull(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -159,11 +159,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'object':
-            if (!schema.required && (!functions.isObject(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isObject(data)) && !functions.isUndefined(data)) {
                 return false;
             }
             
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -208,11 +208,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'array':
-            if (!schema.required && (!functions.isArray(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isArray(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 
@@ -251,11 +251,11 @@ const schema_validator = (_schema, _data) => {
 
 
         case 'array-object':
-            if (!schema.required && (!functions.isObject(data)) && !functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && (!functions.isObject(data)) && !functions.isUndefined(data)) {
                 return false;
             }
 
-            if (!schema.required && functions.isUndefined(data)) {
+            if ((functions.isBoolean(schema.required) && !schema.required) && functions.isUndefined(data)) {
                 return true;
             }
 

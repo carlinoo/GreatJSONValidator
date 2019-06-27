@@ -12,8 +12,8 @@ let schema = {
         boolean: { type: 'boolean', required: true },
         object: {
             type: 'object',
-            required: false,
             additionalProperties: true,
+            required: false,
             validate(data) {
                 return true;
             },
@@ -24,7 +24,7 @@ let schema = {
             },
             properties: { number: { type: 'number', required: true }}
         },
-        array: { type: 'array', required: false, items: { type: 'string', required: false }},
+        array: { type: 'array', items: { type: 'string', required: false }},
         array_object: {
             required: true,
             type: 'array-object',
