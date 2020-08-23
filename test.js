@@ -5,7 +5,8 @@ let schema = {
     additionalProperties: false,
     required: true,
     properties: {
-        string: { type: 'string', required: true, format: "iso8601", validate(data) { return true; }},
+        string: { type: 'string', required: true, format: "iso8601", validate(data) { return true; } },
+        string2: { type: 'string', matches: /\d-(?:days|weeks|months|years)/},
         number: { type: 'number', required: true, less_than: 10, greater_than: 1, equal_to: 9 },
         undefined: { type: 'undefined', required: true },
         null: { type: 'null', required: true },
@@ -19,7 +20,7 @@ let schema = {
             },
 
             validateEach(key, value) {
-                console.log(key, value);
+                // console.log(key, value);
                 return true;
             },
             properties: { number: { type: 'number', required: true }}
@@ -38,6 +39,7 @@ let schema = {
 
 let data = {
     string: "2019-06-26T20:06:18.658Z",
+    string2: "12323-days",
     number: 9,
     null: null,
     boolean: true,

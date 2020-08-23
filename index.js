@@ -41,6 +41,11 @@ const schema_validator = (_schema, _data) => {
                 return false;
             }
 
+            // Matches regex
+            if (!functions.isUndefined(schema.matches) && (!data.match(schema.matches))) {
+                return false;
+            }
+
             // ISO601 format
             if (!functions.isUndefined(schema.format) && schema.format == 'iso8601' && !(/^(-?(?:[1-9][0-9]*)?[0-9]{4})-(1[0-2]|0[1-9])-(3[01]|0[1-9]|[12][0-9])T(2[0-3]|[01][0-9]):([0-5][0-9]):([0-5][0-9])(.[0-9]+)?(Z)?$/.test(data))) {
                 return false;
