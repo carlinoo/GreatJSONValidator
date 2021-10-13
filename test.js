@@ -43,7 +43,7 @@ let schema = {
 let data = {
     string: "2019-06-26T20:06:18.658Z",
     string2: "12323-days",
-    undefined: true,
+    undefined: undefined,
     string3: "y1m9",
     number: 9,
     null: null,
@@ -53,7 +53,7 @@ let data = {
     },
     array: ['hi', 'hello', 'hey'],
     array_object: {
-        'sdfnf': 'e',
+        'sdfnf': '2',
         'wef': '3',
         'sdffwenf': '2',
         'sdsdfffnf': '1',
