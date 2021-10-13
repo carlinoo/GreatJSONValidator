@@ -1,5 +1,7 @@
 const validator = require('./index');
 
+//
+
 let schema = {
     type: 'object',
     additionalProperties: false,
@@ -16,7 +18,7 @@ let schema = {
             type: 'object',
             additionalProperties: true,
             required: false,
-            validate(data) {
+            validate(data, a, b) {
                 return true;
             },
 
@@ -41,6 +43,7 @@ let schema = {
 let data = {
     string: "2019-06-26T20:06:18.658Z",
     string2: "12323-days",
+    undefined: true,
     string3: "y1m9",
     number: 9,
     null: null,

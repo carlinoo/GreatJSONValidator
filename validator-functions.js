@@ -63,5 +63,29 @@ module.exports = {
         }
 
         return diff;
+    },
+
+    schemaPathFinder(_schema, path) {
+        let schema = _schema;
+
+        if (path.length < 1) {
+            return schema;
+        }
+        
+        for (let i = 0; i < path.length; i++) {
+            if (schema.type === "object") {
+                if (!module.exports.isObject(schema.properties) || !schema.properties[path[i]]) {
+                    throw new Error("Schema error");
+                }
+
+                schema = schema.properties[path[i]];
+
+                continue;
+            } else if (schema.type === "array") {
+                if (!module.exports.isObject(schema.properties) || !schema.properties[path[i]]) {
+                    throw new Error("Schema error");
+                }
+            }
+        }
     }
 } 
