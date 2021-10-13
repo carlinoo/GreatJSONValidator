@@ -57,20 +57,20 @@ const schema_validator = (_schema, _data, _options, _path) => {
             }
 
             // Greater than
-            if (!functions.isUndefined(schema.greater_than) && (data <= schema.greater_than)) {
-                pushError(path, data, null, `${path} is not greater than ${schema.greater_than}`);
+            if (!functions.isUndefined(schema.length_greater_than) && (data.length <= schema.length_greater_than)) {
+                pushError(path, data, null, `${path}'s length is not greater than ${schema.length_greater_than}`);
                 return { error: true, success: false };
             }
 
             // Less than
-            if (!functions.isUndefined(schema.less_than) && (data >= schema.less_than)) {
-                pushError(path, data, null, `${path} is not less than ${schema.less_than}`);
+            if (!functions.isUndefined(schema.length_less_than) && (data.length >= schema.length_less_than)) {
+                pushError(path, data, null, `${path}'s length is not less than ${schema.length_less_than}`);
                 return { error: true, success: false };
             }
 
             // Equal to
-            if (!functions.isUndefined(schema.equal_to) && (data !== schema.equal_to)) {
-                pushError(path, data, null, `${path} is not equal_to ${schema.equal_to}`);
+            if (!functions.isUndefined(schema.length_equal_to) && (data.length !== schema.length_equal_to)) {
+                pushError(path, data, null, `${path}'s length is not equal_to ${schema.length_equal_to}`);
                 return { error: true, success: false };
             }
 

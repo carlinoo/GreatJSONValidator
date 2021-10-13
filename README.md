@@ -6,6 +6,29 @@ npm install great-json-validator
 ```
 
 ### Example
+Let's start with an easy example:
+```javascript
+const validator = require('great-json-validator');
+
+let schema = {
+  type: 'object',
+  required: true,
+  properties: {
+    email: { type: 'string', required: true },
+    password: { type: 'string', required: true, length_greater_than: 8 },
+  }
+}
+
+let data = { email: "hello@google.com", password: "googlePassword1" };
+
+console.log(validator(schema, data));
+
+// Returns { success: true }
+
+```
+
+### Complete example
+
 Let's see an example with all the data types and all use cases, so that you can see how powerful and easy this validator is:
 ```javascript
 const validator = require('great-json-validator');
