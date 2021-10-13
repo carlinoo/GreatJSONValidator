@@ -18,12 +18,11 @@ let schema = {
             type: 'object',
             additionalProperties: true,
             required: false,
-            validate(data, a, b) {
+            validate(data, allData) {
                 return true;
             },
 
             validateEach(key, value) {
-                // console.log(key, value);
                 return true;
             },
             properties: { number: { type: 'number', required: true }}
@@ -45,18 +44,18 @@ let data = {
     string2: "12323-days",
     undefined: undefined,
     string3: "y1m9",
-    number: '9',
+    number: 20,
     null: null,
     boolean: true,
     object: {
         number: 2
     },
-    array: ['hi', 'hello', 'hey', '2'],
+    array: ['hi', 'hello', 'hey', 2],
     array_object: {
-        'sdfnf': 2,
-        'wef': '3',
-        'sdffwenf': '2',
-        'sdsdfffnf': '1',
+        'item1': 1,
+        'item2': '2',
+        'item3': '3',
+        'item4': '4',
     }
 };
 
