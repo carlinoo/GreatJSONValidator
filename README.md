@@ -69,6 +69,8 @@ let data = {
 
 console.log(validator(schema, data, { validateAllFields: true }));
 ```
+If you don't care what the errors are or how many there are, we recommend turning off `validateAllFields`, it will stop once it finds an error and don't waste time validate the rest of fields. 
+
 This will log the following information:
 ```json
 {
