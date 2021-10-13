@@ -45,19 +45,19 @@ let data = {
     string2: "12323-days",
     undefined: undefined,
     string3: "y1m9",
-    number: 9,
+    number: '9',
     null: null,
     boolean: true,
     object: {
         number: 2
     },
-    array: ['hi', 'hello', 'hey'],
+    array: ['hi', 'hello', 'hey', '2'],
     array_object: {
-        'sdfnf': '2',
+        'sdfnf': 2,
         'wef': '3',
         'sdffwenf': '2',
         'sdsdfffnf': '1',
     }
 };
 
-console.log(validator(schema, data));
+console.log(validator(schema, data, { validateAllFields: true }));
