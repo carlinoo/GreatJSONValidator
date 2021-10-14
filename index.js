@@ -13,6 +13,7 @@ const pushError = (path, data, error_code, error_message) => {
 const validator = (_schema, _data, _options = {}) => {
     DATA = _data;
     SCHEMA = _schema;
+    errors = [];
 
     let path = functions.isString(_data) ? 'string'
         : functions.isNumber(_data) ? 'number'
